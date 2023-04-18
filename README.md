@@ -12,4 +12,9 @@ content of a field until it has been unlocked.
 
 - **Serialisation** - Rather than locking a field, requests from other users are placed in a queue. Once the first user has finished using the field, the next command in the queue is executed and so on.
 
+- **Timestamp ordering** - When multiple commands are sent to the same field in a database, each is assigned a timestamp which marks the point in time at which the command was initiated. Commands are carried out on the field in the order of their timestamps. 
 
+- **Commitment ordering** - When a database uses commitment ordering, an algorithm is used to work out an optimum 
+order in which to execute commands for the same field. This algorithm will take into
+account the impact of commands on other parts of the database and attempt to minimise 
+issues from occurring with the database. 
